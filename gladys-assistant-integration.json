@@ -1,0 +1,646 @@
+{
+  "manifest_version": 1,
+  "type": "device",
+  "name": "RecycleApp",
+  "description": {
+    "en": "Belgian waste collection calendar (RecycleApp): reminders, scenes and dashboard widget.",
+    "fr": "Calendrier des collectes de déchets en Belgique (RecycleApp) : rappels, scènes et widget.",
+    "de": "Belgischer Müllabfuhrkalender (RecycleApp): Erinnerungen, Szenen und Dashboard-Widget.",
+    "es": "Calendario de recogida de residuos en Bélgica (RecycleApp): avisos, escenas y widget."
+  },
+  "version": "1.0.0",
+  "docker_image": "ghcr.io/prohand/gladys-recycleapp:1.0.0",
+  "gladys_version": ">=5.1.0",
+  "cover_image": "https://raw.githubusercontent.com/prohand/gladys-recycleapp/main/cover.png",
+  "categories": ["environment", "services"],
+  "transports": ["cloud"],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "Getting started",
+        "fr": "Pour commencer",
+        "de": "Erste Schritte",
+        "es": "Primeros pasos"
+      },
+      "description": {
+        "en": "The integration reads the waste collection calendar RecycleApp (Fost Plus) publishes for a Belgian address: no account, no key. Type your address as on recycleapp.be, then press \"Test the connection\". One device per waste type, plus the next collection, appear in the Discovery tab.",
+        "fr": "L'intégration lit le calendrier des collectes que RecycleApp (Fost Plus) publie pour une adresse en Belgique : pas de compte, pas de clé. Tapez votre adresse comme sur recycleapp.be, puis appuyez sur « Tester la connexion ». Un appareil par type de déchet, plus la prochaine collecte, apparaissent dans l'onglet Découverte.",
+        "de": "Die Integration liest den Abfuhrkalender, den RecycleApp (Fost Plus) für eine belgische Adresse veröffentlicht: kein Konto, kein Schlüssel. Gib deine Adresse wie auf recycleapp.be ein und drücke dann „Verbindung testen“. Ein Gerät pro Abfallart sowie die nächste Abholung erscheinen im Tab Erkennung.",
+        "es": "La integración lee el calendario de recogidas que RecycleApp (Fost Plus) publica para una dirección en Bélgica: sin cuenta ni clave. Escriba su dirección como en recycleapp.be y pulse «Probar la conexión». Un dispositivo por tipo de residuo, más la próxima recogida, aparecen en la pestaña Descubrimiento."
+      },
+      "links": [
+        {
+          "url": "https://www.recycleapp.be",
+          "label": {
+            "en": "recycleapp.be",
+            "fr": "recycleapp.be",
+            "de": "recycleapp.be",
+            "es": "recycleapp.be"
+          }
+        },
+        {
+          "url": "https://github.com/prohand/gladys-recycleapp/blob/main/docs/en.md",
+          "label": {
+            "en": "Integration documentation",
+            "fr": "Documentation de l'intégration",
+            "de": "Dokumentation der Integration",
+            "es": "Documentación de la integración"
+          }
+        }
+      ]
+    },
+    {
+      "key": "zipcode",
+      "type": "string",
+      "label": {
+        "en": "Zip code",
+        "fr": "Code postal",
+        "de": "Postleitzahl",
+        "es": "Código postal"
+      },
+      "placeholder": {
+        "en": "e.g. 5000",
+        "fr": "ex. 5000",
+        "de": "z. B. 4700",
+        "es": "p. ej. 5000"
+      },
+      "required": true
+    },
+    {
+      "key": "street",
+      "type": "string",
+      "label": {
+        "en": "Street",
+        "fr": "Rue",
+        "de": "Straße",
+        "es": "Calle"
+      },
+      "description": {
+        "en": "The street name in French, Dutch or German, as RecycleApp writes it. Not sure? \"Find my street\" lists the streets of your zip code.",
+        "fr": "Le nom de la rue en français, en néerlandais ou en allemand, comme RecycleApp l'écrit. Un doute ? « Chercher ma rue » liste les rues de votre code postal.",
+        "de": "Der Straßenname auf Französisch, Niederländisch oder Deutsch, so wie RecycleApp ihn schreibt. Unsicher? „Meine Straße suchen“ listet die Straßen deiner Postleitzahl auf.",
+        "es": "El nombre de la calle en francés, neerlandés o alemán, tal como lo escribe RecycleApp. ¿Duda? «Buscar mi calle» lista las calles de su código postal."
+      },
+      "placeholder": {
+        "en": "e.g. Rue de Fer",
+        "fr": "ex. Rue de Fer",
+        "de": "z. B. Neustraße",
+        "es": "p. ej. Rue de Fer"
+      },
+      "required": true
+    },
+    {
+      "key": "house_number",
+      "type": "string",
+      "label": {
+        "en": "House number",
+        "fr": "Numéro",
+        "de": "Hausnummer",
+        "es": "Número"
+      },
+      "placeholder": {
+        "en": "e.g. 12",
+        "fr": "ex. 12",
+        "de": "z. B. 12",
+        "es": "p. ej. 12"
+      },
+      "required": true
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "label": {
+        "en": "Language of the waste types",
+        "fr": "Langue des types de déchets",
+        "de": "Sprache der Abfallarten",
+        "es": "Idioma de los tipos de residuos"
+      },
+      "description": {
+        "en": "The language the waste types are named in: device names, device states and scene variables. The dashboard widget follows the language of each user.",
+        "fr": "La langue dans laquelle les types de déchets sont nommés : noms et états des appareils, variables des scènes. Le widget du tableau de bord suit la langue de chaque utilisateur.",
+        "de": "Die Sprache, in der die Abfallarten benannt werden: Gerätenamen, Gerätezustände und Szenenvariablen. Das Dashboard-Widget folgt der Sprache jedes Benutzers.",
+        "es": "El idioma en que se nombran los tipos de residuos: nombres y estados de los dispositivos, variables de las escenas. El widget del panel sigue el idioma de cada usuario."
+      },
+      "required": false,
+      "default": "fr",
+      "options": [
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "nl",
+          "label": {
+            "en": "Dutch",
+            "fr": "Néerlandais",
+            "de": "Niederländisch",
+            "es": "Neerlandés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        }
+      ]
+    },
+    {
+      "key": "reminder_time",
+      "type": "string",
+      "label": {
+        "en": "Reminder time (the evening before)",
+        "fr": "Heure du rappel (la veille)",
+        "de": "Uhrzeit der Erinnerung (am Vorabend)",
+        "es": "Hora del aviso (la víspera)"
+      },
+      "description": {
+        "en": "When the \"Collection tomorrow\" scene trigger fires, Belgian time, HH:MM.",
+        "fr": "Quand le déclencheur de scène « Collecte demain » se déclenche, heure belge, HH:MM.",
+        "de": "Wann der Szenenauslöser „Abholung morgen“ auslöst, belgische Zeit, HH:MM.",
+        "es": "Cuándo se activa el disparador de escena «Recogida mañana», hora belga, HH:MM."
+      },
+      "placeholder": {
+        "en": "19:00",
+        "fr": "19:00",
+        "de": "19:00",
+        "es": "19:00"
+      },
+      "required": false,
+      "default": "19:00"
+    },
+    {
+      "key": "morning_time",
+      "type": "string",
+      "label": {
+        "en": "Time of the collection-day trigger",
+        "fr": "Heure du déclencheur du jour de collecte",
+        "de": "Uhrzeit des Auslösers am Abholtag",
+        "es": "Hora del disparador del día de recogida"
+      },
+      "description": {
+        "en": "When the \"Collection today\" scene trigger fires, Belgian time, HH:MM.",
+        "fr": "Quand le déclencheur de scène « Collecte aujourd'hui » se déclenche, heure belge, HH:MM.",
+        "de": "Wann der Szenenauslöser „Abholung heute“ auslöst, belgische Zeit, HH:MM.",
+        "es": "Cuándo se activa el disparador de escena «Recogida hoy», hora belga, HH:MM."
+      },
+      "placeholder": {
+        "en": "07:00",
+        "fr": "07:00",
+        "de": "07:00",
+        "es": "07:00"
+      },
+      "required": false,
+      "default": "07:00"
+    },
+    {
+      "key": "days_ahead",
+      "type": "number",
+      "label": {
+        "en": "Days read ahead",
+        "fr": "Jours lus à l'avance",
+        "de": "Im Voraus gelesene Tage",
+        "es": "Días leídos por adelantado"
+      },
+      "description": {
+        "en": "How far ahead the calendar is read, in days. A waste type with no collection in that window shows -1.",
+        "fr": "Jusqu'où le calendrier est lu, en jours. Un type de déchet sans collecte dans cette période affiche -1.",
+        "de": "Wie weit im Voraus der Kalender gelesen wird, in Tagen. Eine Abfallart ohne Abholung in diesem Zeitraum zeigt -1.",
+        "es": "Hasta dónde se lee el calendario, en días. Un tipo de residuo sin recogida en ese periodo muestra -1."
+      },
+      "required": false,
+      "default": 60,
+      "min": 7,
+      "max": 365
+    },
+    {
+      "key": "refresh_hours",
+      "type": "number",
+      "label": {
+        "en": "Refresh interval (h)",
+        "fr": "Intervalle de rafraîchissement (h)",
+        "de": "Aktualisierungsintervall (h)",
+        "es": "Intervalo de actualización (h)"
+      },
+      "description": {
+        "en": "Hours between two reads of RecycleApp. A calendar changes a few times a year: 12 hours is plenty.",
+        "fr": "Heures entre deux lectures de RecycleApp. Un calendrier change quelques fois par an : 12 heures suffisent largement.",
+        "de": "Stunden zwischen zwei Abfragen von RecycleApp. Ein Kalender ändert sich wenige Male im Jahr: 12 Stunden reichen völlig.",
+        "es": "Horas entre dos lecturas de RecycleApp. Un calendario cambia pocas veces al año: 12 horas son más que suficientes."
+      },
+      "required": false,
+      "default": 12,
+      "min": 1,
+      "max": 48
+    }
+  ],
+  "actions": [
+    {
+      "key": "test_connection",
+      "label": {
+        "en": "Test the connection",
+        "fr": "Tester la connexion",
+        "de": "Verbindung testen",
+        "es": "Probar la conexión"
+      },
+      "timeout_seconds": 45
+    },
+    {
+      "key": "find_street",
+      "label": {
+        "en": "Find my street",
+        "fr": "Chercher ma rue",
+        "de": "Meine Straße suchen",
+        "es": "Buscar mi calle"
+      },
+      "timeout_seconds": 30,
+      "fields": [
+        {
+          "key": "find_street_intro",
+          "type": "section",
+          "label": {
+            "en": "Which name does RecycleApp use?",
+            "fr": "Quel nom RecycleApp utilise-t-il ?",
+            "de": "Welchen Namen verwendet RecycleApp?",
+            "es": "¿Qué nombre usa RecycleApp?"
+          },
+          "description": {
+            "en": "Type part of the street name: the answer lists the streets RecycleApp knows in the zip code. Copy the right one into the Street field.",
+            "fr": "Tapez une partie du nom de la rue : la réponse liste les rues que RecycleApp connaît dans le code postal. Recopiez la bonne dans le champ Rue.",
+            "de": "Gib einen Teil des Straßennamens ein: Die Antwort listet die Straßen auf, die RecycleApp in der Postleitzahl kennt. Übernimm die richtige in das Feld Straße.",
+            "es": "Escriba parte del nombre de la calle: la respuesta lista las calles que RecycleApp conoce en el código postal. Copie la correcta en el campo Calle."
+          }
+        },
+        {
+          "key": "zipcode",
+          "type": "string",
+          "label": {
+            "en": "Zip code",
+            "fr": "Code postal",
+            "de": "Postleitzahl",
+            "es": "Código postal"
+          },
+          "description": {
+            "en": "Empty: the one of the configuration.",
+            "fr": "Vide : celui de la configuration.",
+            "de": "Leer: die aus der Konfiguration.",
+            "es": "Vacío: el de la configuración."
+          },
+          "placeholder": {
+            "en": "e.g. 5000",
+            "fr": "ex. 5000",
+            "de": "z. B. 4700",
+            "es": "p. ej. 5000"
+          },
+          "required": false
+        },
+        {
+          "key": "search",
+          "type": "string",
+          "label": {
+            "en": "Part of the street name",
+            "fr": "Partie du nom de la rue",
+            "de": "Teil des Straßennamens",
+            "es": "Parte del nombre de la calle"
+          },
+          "placeholder": {
+            "en": "e.g. fer",
+            "fr": "ex. fer",
+            "de": "z. B. haupt",
+            "es": "p. ej. fer"
+          },
+          "required": true
+        }
+      ]
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "collection_tomorrow",
+      "label": {
+        "en": "Waste collection tomorrow",
+        "fr": "Collecte des déchets demain",
+        "de": "Müllabholung morgen",
+        "es": "Recogida de residuos mañana"
+      },
+      "description": {
+        "en": "The evening before a collection, at the reminder time: once, with every waste type of the day.",
+        "fr": "La veille d'une collecte, à l'heure du rappel : une fois, avec tous les types de déchets du jour.",
+        "de": "Am Vorabend einer Abholung, zur Erinnerungszeit: einmal, mit allen Abfallarten des Tages.",
+        "es": "La víspera de una recogida, a la hora del aviso: una vez, con todos los tipos de residuos del día."
+      },
+      "variables": [
+        {
+          "key": "fractions",
+          "type": "string",
+          "label": {
+            "en": "Waste types",
+            "fr": "Types de déchets",
+            "de": "Abfallarten",
+            "es": "Tipos de residuos"
+          }
+        },
+        {
+          "key": "count",
+          "type": "number",
+          "label": {
+            "en": "Number of waste types",
+            "fr": "Nombre de types de déchets",
+            "de": "Anzahl der Abfallarten",
+            "es": "Número de tipos de residuos"
+          }
+        },
+        {
+          "key": "date",
+          "type": "string",
+          "label": {
+            "en": "Date (YYYY-MM-DD)",
+            "fr": "Date (AAAA-MM-JJ)",
+            "de": "Datum (JJJJ-MM-TT)",
+            "es": "Fecha (AAAA-MM-DD)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "fraction_tomorrow",
+      "label": {
+        "en": "A given waste type is collected tomorrow",
+        "fr": "Un type de déchet est collecté demain",
+        "de": "Eine Abfallart wird morgen abgeholt",
+        "es": "Un tipo de residuo se recoge mañana"
+      },
+      "description": {
+        "en": "The evening before, at the reminder time, for the waste type chosen (its device).",
+        "fr": "La veille, à l'heure du rappel, pour le type de déchet choisi (son appareil).",
+        "de": "Am Vorabend, zur Erinnerungszeit, für die gewählte Abfallart (ihr Gerät).",
+        "es": "La víspera, a la hora del aviso, para el tipo de residuo elegido (su dispositivo)."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Waste type",
+            "fr": "Type de déchet",
+            "de": "Abfallart",
+            "es": "Tipo de residuo"
+          },
+          "required": true
+        }
+      ],
+      "variables": [
+        {
+          "key": "fraction",
+          "type": "string",
+          "label": {
+            "en": "Waste type",
+            "fr": "Type de déchet",
+            "de": "Abfallart",
+            "es": "Tipo de residuo"
+          }
+        },
+        {
+          "key": "date",
+          "type": "string",
+          "label": {
+            "en": "Date (YYYY-MM-DD)",
+            "fr": "Date (AAAA-MM-JJ)",
+            "de": "Datum (JJJJ-MM-TT)",
+            "es": "Fecha (AAAA-MM-DD)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "collection_today",
+      "label": {
+        "en": "Waste collection today",
+        "fr": "Collecte des déchets aujourd'hui",
+        "de": "Müllabholung heute",
+        "es": "Recogida de residuos hoy"
+      },
+      "description": {
+        "en": "The morning of a collection day, at the time set: once, with every waste type of the day.",
+        "fr": "Le matin d'un jour de collecte, à l'heure choisie : une fois, avec tous les types de déchets du jour.",
+        "de": "Am Morgen eines Abholtags, zur eingestellten Uhrzeit: einmal, mit allen Abfallarten des Tages.",
+        "es": "La mañana de un día de recogida, a la hora elegida: una vez, con todos los tipos de residuos del día."
+      },
+      "variables": [
+        {
+          "key": "fractions",
+          "type": "string",
+          "label": {
+            "en": "Waste types",
+            "fr": "Types de déchets",
+            "de": "Abfallarten",
+            "es": "Tipos de residuos"
+          }
+        },
+        {
+          "key": "count",
+          "type": "number",
+          "label": {
+            "en": "Number of waste types",
+            "fr": "Nombre de types de déchets",
+            "de": "Anzahl der Abfallarten",
+            "es": "Número de tipos de residuos"
+          }
+        },
+        {
+          "key": "date",
+          "type": "string",
+          "label": {
+            "en": "Date (YYYY-MM-DD)",
+            "fr": "Date (AAAA-MM-JJ)",
+            "de": "Datum (JJJJ-MM-TT)",
+            "es": "Fecha (AAAA-MM-DD)"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "next_collection",
+      "label": {
+        "en": "Get the next waste collection",
+        "fr": "Obtenir la prochaine collecte",
+        "de": "Nächste Müllabholung abrufen",
+        "es": "Obtener la próxima recogida"
+      },
+      "description": {
+        "en": "The next collection, of one waste type or of any, for the following actions and conditions.",
+        "fr": "La prochaine collecte, d'un type de déchet ou de n'importe lequel, pour les actions et conditions suivantes.",
+        "de": "Die nächste Abholung, einer Abfallart oder beliebig, für die folgenden Aktionen und Bedingungen.",
+        "es": "La próxima recogida, de un tipo de residuo o de cualquiera, para las acciones y condiciones siguientes."
+      },
+      "timeout_seconds": 10,
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Waste type (empty: any)",
+            "fr": "Type de déchet (vide : tous)",
+            "de": "Abfallart (leer: alle)",
+            "es": "Tipo de residuo (vacío: todos)"
+          },
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "key": "found",
+          "type": "boolean",
+          "label": {
+            "en": "Collection found",
+            "fr": "Collecte trouvée",
+            "de": "Abholung gefunden",
+            "es": "Recogida encontrada"
+          }
+        },
+        {
+          "key": "days",
+          "type": "number",
+          "label": {
+            "en": "Days left (-1: none)",
+            "fr": "Jours restants (-1 : aucune)",
+            "de": "Verbleibende Tage (-1: keine)",
+            "es": "Días restantes (-1: ninguna)"
+          }
+        },
+        {
+          "key": "date",
+          "type": "string",
+          "label": {
+            "en": "Date (YYYY-MM-DD)",
+            "fr": "Date (AAAA-MM-JJ)",
+            "de": "Datum (JJJJ-MM-TT)",
+            "es": "Fecha (AAAA-MM-DD)"
+          }
+        },
+        {
+          "key": "fractions",
+          "type": "string",
+          "label": {
+            "en": "Waste types",
+            "fr": "Types de déchets",
+            "de": "Abfallarten",
+            "es": "Tipos de residuos"
+          }
+        }
+      ]
+    },
+    {
+      "key": "refresh_calendar",
+      "label": {
+        "en": "Read the waste calendar again",
+        "fr": "Relire le calendrier des collectes",
+        "de": "Abfuhrkalender neu lesen",
+        "es": "Volver a leer el calendario"
+      },
+      "description": {
+        "en": "Ask RecycleApp now instead of waiting for the next refresh.",
+        "fr": "Interroge RecycleApp maintenant au lieu d'attendre le prochain rafraîchissement.",
+        "de": "Fragt RecycleApp jetzt ab, statt auf die nächste Aktualisierung zu warten.",
+        "es": "Consulta RecycleApp ahora en lugar de esperar a la próxima actualización."
+      },
+      "timeout_seconds": 45,
+      "outputs": [
+        {
+          "key": "collections",
+          "type": "number",
+          "label": {
+            "en": "Collections ahead",
+            "fr": "Collectes à venir",
+            "de": "Anstehende Abholungen",
+            "es": "Recogidas próximas"
+          }
+        },
+        {
+          "key": "next_date",
+          "type": "string",
+          "label": {
+            "en": "Next date (YYYY-MM-DD)",
+            "fr": "Prochaine date (AAAA-MM-JJ)",
+            "de": "Nächstes Datum (JJJJ-MM-TT)",
+            "es": "Próxima fecha (AAAA-MM-DD)"
+          }
+        },
+        {
+          "key": "next_fractions",
+          "type": "string",
+          "label": {
+            "en": "Next waste types",
+            "fr": "Prochains types de déchets",
+            "de": "Nächste Abfallarten",
+            "es": "Próximos tipos de residuos"
+          }
+        }
+      ]
+    }
+  ],
+  "widgets": [
+    {
+      "key": "collections",
+      "label": {
+        "en": "Waste collections",
+        "fr": "Collectes des déchets",
+        "de": "Müllabholungen",
+        "es": "Recogida de residuos"
+      },
+      "description": {
+        "en": "The next collections of your address, with how many days are left.",
+        "fr": "Les prochaines collectes de votre adresse, avec le nombre de jours restants.",
+        "de": "Die nächsten Abholungen deiner Adresse, mit den verbleibenden Tagen.",
+        "es": "Las próximas recogidas de su dirección, con los días que faltan."
+      },
+      "icon": "trash-2",
+      "settings": [
+        {
+          "key": "count",
+          "type": "number",
+          "label": {
+            "en": "Collections shown",
+            "fr": "Collectes affichées",
+            "de": "Angezeigte Abholungen",
+            "es": "Recogidas mostradas"
+          },
+          "description": {
+            "en": "How many collections are listed (1 to 8).",
+            "fr": "Nombre de collectes listées (1 à 8).",
+            "de": "Wie viele Abholungen aufgelistet werden (1 bis 8).",
+            "es": "Cuántas recogidas se listan (1 a 8)."
+          },
+          "required": false,
+          "default": 5,
+          "min": 1,
+          "max": 8
+        }
+      ],
+      "action_timeout_seconds": 45
+    }
+  ]
+}
