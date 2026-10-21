@@ -6,6 +6,8 @@ All notable changes to this integration are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-21
+
 ### Added
 
 - RecycleApp waste collection calendar for a Belgian address (zip code, street, house number), read from the public RecycleApp API: no account, no key.
@@ -17,4 +19,5 @@ All notable changes to this integration are documented here. The format follows
 - Cloud transport badge, degraded while the last calendar read is served because RecycleApp does not answer.
 - English, French, German and Spanish texts and documentation.
 
-[Unreleased]: https://github.com/prohand/gladys-recycleapp/commits/main
+[Unreleased]: https://github.com/prohand/gladys-recycleapp/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/prohand/gladys-recycleapp/releases/tag/v1.0.1
