@@ -8,8 +8,8 @@
     "de": "Belgischer Müllabfuhrkalender (RecycleApp): Erinnerungen, Szenen und Dashboard-Widget.",
     "es": "Calendario de recogida de residuos en Bélgica (RecycleApp): avisos, escenas y widget."
   },
-  "version": "1.0.1",
-  "docker_image": "ghcr.io/prohand/gladys-recycleapp:1.0.1",
+  "version": "1.0.2",
+  "docker_image": "ghcr.io/prohand/gladys-recycleapp:1.0.2",
   "gladys_version": ">=5.1.0",
   "cover_image": "https://raw.githubusercontent.com/prohand/gladys-recycleapp/main/cover.png",
   "categories": ["environment", "services"],
