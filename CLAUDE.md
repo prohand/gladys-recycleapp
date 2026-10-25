@@ -8,7 +8,7 @@ A Gladys Assistant **external integration** (Node 22+, ESM, no build step, one r
 dependency: `@gladysassistant/integration-sdk`) for **RecycleApp** (Fost Plus), the Belgian
 waste collection calendar. It reads the calendar of one address from the public RecycleApp API
 (no account, no key) and exposes it as devices, scene triggers, scene actions and a dashboard
-widget (Gladys 5.1+). Cloud only: manifest `"transports": ["cloud"]`. Started from the official
+widget (Gladys 5.3+). Cloud only: manifest `"transports": ["cloud"]`. Started from the official
 JavaScript template (GladysAssistant/integration-template-js), workflows from prohand/gladys-devmel.
 
 ## Commands

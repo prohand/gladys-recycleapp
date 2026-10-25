@@ -11,7 +11,7 @@ recycleapp.be. Solo necesita acceso a Internet (insignia **cloud**).
 ## Instalación
 
 1. Instale **RecycleApp** desde el catálogo de integraciones de Gladys (Gladys
-   5.1 o posterior).
+   5.3.0 o posterior).
 2. En **Configuración**, indique:
    - **Código postal**: por ejemplo `5000`;
    - **Calle**: el nombre de la calle en francés, neerlandés o alemán, tal como

@@ -10,8 +10,7 @@ die Website recycleapp.be. Sie braucht nur Internetzugang (Badge **Cloud**).
 
 ## Installation
 
-1. Installiere **RecycleApp** aus dem Integrationskatalog von Gladys (Gladys 5.1
-   oder neuer).
+1. Installiere **RecycleApp** aus dem Integrationskatalog von Gladys (Gladys 5.3.0 oder neuer).
 2. Fülle unter **Konfiguration** aus:
    - **Postleitzahl**: zum Beispiel `4700`;
    - **Straße**: der Straßenname auf Französisch, Niederländisch oder Deutsch,
