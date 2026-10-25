@@ -9,7 +9,7 @@ Gladys: devices, scene triggers, scene actions and a dashboard widget.
 - One address per installation: zip code, street, house number.
 - Texts in English, French, German and Spanish; waste types named in French, Dutch, German or
   English (the languages RecycleApp publishes).
-- Requires **Gladys 5.1+**.
+- Requires **Gladys 5.3.0+**.
 
 User documentation: [English](docs/en.md) · [Français](docs/fr.md) · [Deutsch](docs/de.md) ·
 [Español](docs/es.md).

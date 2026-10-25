@@ -9,8 +9,7 @@ recycleapp.be website. It only needs Internet access (**cloud** badge).
 
 ## Installation
 
-1. Install **RecycleApp** from the Gladys integration catalog (Gladys 5.1 or
-   later).
+1. Install **RecycleApp** from the Gladys integration catalog (Gladys 5.3.0 or later).
 2. In **Configuration**, fill in:
    - **Zip code**: for example `5000`;
    - **Street**: the street name in French, Dutch or German, as RecycleApp

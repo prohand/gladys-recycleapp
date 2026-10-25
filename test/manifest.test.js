@@ -57,8 +57,51 @@ test('scene triggers, scene actions and widgets require Gladys >= 5.1.0', () => 
   assert.ok(major > 5 || (major === 5 && minor >= 1), manifest.gladys_version);
 });
 
+test('keywords, countries and music require Gladys >= 5.3.0', () => {
+  const [major, minor] = minGladysVersion();
+  if (['keywords', 'countries', 'music'].some((field) => field in manifest)) {
+    assert.ok(major > 5 || (major === 5 && minor >= 3), manifest.gladys_version);
+  }
+});
+
+test('catalog: 1 to 10 unique search keywords of 2 to 30 characters', () => {
+  const { keywords } = manifest;
+  assert.ok(Array.isArray(keywords) && keywords.length >= 1 && keywords.length <= 10);
+  const normalized = keywords.map((keyword) => keyword.trim().toLowerCase());
+  assert.equal(new Set(normalized).size, keywords.length, 'duplicate keyword');
+  for (const keyword of normalized) {
+    assert.ok(keyword.length >= 2 && keyword.length <= 30, `keyword "${keyword}"`);
+  }
+});
+
+test('catalog: Belgium only, RecycleApp covers Belgian municipalities', () => {
+  assert.deepEqual(manifest.countries, ['BE']);
+});
+
+const CATALOG_CATEGORIES = [
+  'climate',
+  'lighting',
+  'energy',
+  'security',
+  'multimedia',
+  'appliances',
+  'environment',
+  'protocols',
+  'network',
+  'notifications',
+  'assistants',
+  'services',
+  'transport',
+  'vehicles',
+  'servers',
+  'leisure',
+];
+
 test('catalog: categories and the cloud transport', () => {
   assert.ok(manifest.categories.length >= 1 && manifest.categories.length <= 3);
+  for (const category of manifest.categories) {
+    assert.ok(CATALOG_CATEGORIES.includes(category), category);
+  }
   // RecycleApp is a cloud API: no local channel, so no "prefer local" toggle.
   assert.deepEqual(manifest.transports, ['cloud']);
 });
