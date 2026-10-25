@@ -6,6 +6,8 @@ All notable changes to this integration are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-25
+
 ### Added
 
 - Catalog: search keywords (Fost Plus, afvalkalender, PMD, poubelles…) and Belgium as the country the integration serves.
@@ -32,6 +34,7 @@ All notable changes to this integration are documented here. The format follows
 - Cloud transport badge, degraded while the last calendar read is served because RecycleApp does not answer.
 - English, French, German and Spanish texts and documentation.
 
-[Unreleased]: https://github.com/prohand/gladys-recycleapp/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/prohand/gladys-recycleapp/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/prohand/gladys-recycleapp/compare/v1.0.2...v1.1.0
 [1.0.2]: https://github.com/prohand/gladys-recycleapp/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/prohand/gladys-recycleapp/releases/tag/v1.0.1
