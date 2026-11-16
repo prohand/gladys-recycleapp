@@ -6,6 +6,8 @@ All notable changes to this integration are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.1.2] - 2026-11-16
+
 - Update `@gladysassistant/integration-sdk` to 0.16.1 (security update).
 
 ## [1.1.1] - 2026-11-16
@@ -40,7 +42,8 @@ All notable changes to this integration are documented here. The format follows
 - Cloud transport badge, degraded while the last calendar read is served because RecycleApp does not answer.
 - English, French, German and Spanish texts and documentation.
 
-[Unreleased]: https://github.com/prohand/gladys-recycleapp/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/prohand/gladys-recycleapp/compare/v1.1.2...HEAD
+[1.1.2]: https://github.com/prohand/gladys-recycleapp/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/prohand/gladys-recycleapp/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/prohand/gladys-recycleapp/compare/v1.0.2...v1.1.0
 [1.0.2]: https://github.com/prohand/gladys-recycleapp/compare/v1.0.1...v1.0.2
